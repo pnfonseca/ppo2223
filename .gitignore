@@ -1,0 +1,6 @@
+P_??/.idea/**
+P_??/cmake-build-*/**
+P_??/build/**
+.vscode/
+**.pdf
+**~
