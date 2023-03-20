@@ -10,7 +10,7 @@ using namespace std;
 // Left to the user guarantee that data has enough elements!
 Tuple::Tuple(size_t nElements, const double *data) : nElements(nElements) {
     this->data = new double[nElements];
-    for (int i = 0; i < nElements; i++) {
+    for (size_t i = 0; i < nElements; i++) {
         this->data[i] = data[i];
     }
 
@@ -19,7 +19,7 @@ Tuple::Tuple(size_t nElements, const double *data) : nElements(nElements) {
 // When only the size is defined, all values initialized to zero
 Tuple::Tuple(size_t nElements) : nElements(nElements) {
     data = new double[nElements];
-    for (int i = 0; i < nElements; i++) {
+    for (size_t i = 0; i < nElements; i++) {
         data[i] = 0;
     }
 
@@ -31,9 +31,26 @@ Tuple::Tuple() : Tuple(2) {
 
 }
 
+// Copy constructor
+Tuple::Tuple(const Tuple &other) : Tuple(other.nElements, other.data){
+
+}
+
+// Operators
+Tuple &Tuple::operator=(Tuple other) {
+    // Confirm that we are dealing with another object
+    if(this != &other){
+        this->nElements = other.nElements;
+        for(size_t i=0; i<this->nElements; i++){
+            this->data[i] = other.data[i];
+        }
+    }
+    return *this;
+}
+
 ostream &operator<<(ostream &os, Tuple t) {
     os << "[";
-    for (int i = 0; i < t.nElements; i++) {
+    for (size_t i = 0; i < t.nElements; i++) {
         os << t.data[i];
         if (i < t.nElements - 1) {
             os << ",";
@@ -41,17 +58,6 @@ ostream &operator<<(ostream &os, Tuple t) {
     }
     os << "]";
     return os;
-}
-
-Tuple &Tuple::operator=(Tuple other) {
-    // Confirm that we are dealing with another object
-    if(this != &other){
-        this->nElements = other.nElements;
-        for(int i=0; i<this->nElements; i++){
-            this->data[i] = other.data[i];
-        }
-    }
-    return *this;
 }
 
 bool Tuple::operator==(Tuple other) {
@@ -63,7 +69,7 @@ bool Tuple::operator==(Tuple other) {
         result = false;
     }
     else {
-        for (int i = 0; i < this->nElements; i++) {
+        for (size_t i = 0; i < this->nElements; i++) {
             if (this->data[i] != other.data[i]) {
                 result = false;
             }
@@ -74,23 +80,13 @@ bool Tuple::operator==(Tuple other) {
 }
 
 bool Tuple::operator!=(Tuple other) {
-    bool result;
-    result = false;
-
-    if(this->nElements!= other.nElements){
-        result = true;
-    }
-    else {
-        for (int i = 0; i < this->nElements; i++) {
-            if (this->data[i] != other.data[i]) {
-                result = true;
-            }
-        }
-
-    }
-    return result;
+    return !(*this==other);
 }
 
-double *Tuple::getData() {
+double* Tuple::getData() const {
     return data;
+}
+
+size_t Tuple::getNElements() const {
+    return nElements;
 }

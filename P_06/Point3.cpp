@@ -22,23 +22,23 @@ Point3::Point3(double x, double y, double z) : Tuple(3) {
     data[2] = z;
 }
 
-Point3 Point3::operator+(Vector3 v) {
+Point3 Point3::operator+(const Vector3& v) const {
     Point3 result;
     double *vdata = v.getData();
-    for (int i = 0; i < nElements; i++) {
+    for (size_t i = 0; i < nElements; i++) {
         result.data[i] = this->data[i] + vdata[i];
     }
     return result;
 }
 
-Vector3 operator-(Point3 other) {
-    Vector3 v;
-
-    for (int i = 0; i < 3; i++) {
-        v.data[i] = this->data[i] - other.data[i];
-    }
-    return v;
-}
+//Vector3 operator-(Point3 other) {
+//    Vector3 v;
+//
+//    for (int i = 0; i < 3; i++) {
+//        v.data[i] = this->data[i] - other.data[i];
+//    }
+//    return v;
+//}
 
 
 

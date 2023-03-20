@@ -6,7 +6,6 @@
 #define P_06_VECTOR3_H
 
 #include "Tuple.h"
-#include "Point3.h"
 
 class Vector3 : public Tuple {
 public:

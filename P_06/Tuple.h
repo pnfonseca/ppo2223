@@ -16,10 +16,13 @@ public:
     Tuple(size_t nElements);
     Tuple(size_t nElements, const double *data);
     Tuple();
+    Tuple(const Tuple & other);
 
 public:
+    double *getData() const;
+    size_t getNElements() const;
+
     friend ostream& operator << (ostream& os, Tuple t);
-    double *getData();
 
     // Copy constructor
     Tuple& operator = (Tuple other);
