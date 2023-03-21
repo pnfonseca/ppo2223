@@ -3,6 +3,7 @@
 //
 
 #include "Tuple.h"
+#include <iostream>
 
 using namespace std;
 
@@ -33,11 +34,10 @@ Tuple::Tuple() : Tuple(2) {
 
 // Copy constructor
 Tuple::Tuple(const Tuple &other) : Tuple(other.nElements, other.data){
-
 }
 
 // Operators
-Tuple &Tuple::operator=(Tuple other) {
+Tuple &Tuple::operator=(const Tuple &other) {
     // Confirm that we are dealing with another object
     if(this != &other){
         this->nElements = other.nElements;

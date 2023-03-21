@@ -17,8 +17,8 @@ public:
     // Operations
     // Point = Point + Vector
     Point3 operator+(const Vector3 & v) const;
-//    // Vector = Point - Point
-//    friend Vector3 operator-(Point3 other);
+    // Vector = Point - Point
+    Vector3 operator-(Point3 other);
 };
 
 

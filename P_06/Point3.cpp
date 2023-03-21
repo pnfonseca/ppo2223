@@ -31,14 +31,15 @@ Point3 Point3::operator+(const Vector3& v) const {
     return result;
 }
 
-//Vector3 operator-(Point3 other) {
-//    Vector3 v;
-//
-//    for (int i = 0; i < 3; i++) {
-//        v.data[i] = this->data[i] - other.data[i];
-//    }
-//    return v;
-//}
+Vector3 Point3::operator-(Point3 other) {
+    double v_data[3];
+    for(size_t i=0; i<nElements; i++){
+        v_data[i] = this->data[i] - other.data[i];
+    }
+    Vector3 v(v_data);
+    return v;
+}
+
 
 
 

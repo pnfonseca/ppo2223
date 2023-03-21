@@ -25,7 +25,7 @@ public:
     friend ostream& operator << (ostream& os, Tuple t);
 
     // Copy constructor
-    Tuple& operator = (Tuple other);
+    Tuple& operator = (const Tuple &other);
 
     // Comparison operators
     bool operator ==(Tuple other);

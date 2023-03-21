@@ -10,11 +10,16 @@
 class Vector3 : public Tuple {
 public:
     Vector3();
-    Vector3(double* data);
+
+    Vector3(double *data);
+
     Vector3(double x, double y, double z);
 
     // Operators:
-
+    Vector3 operator+(const Vector3 &other);
+    Vector3 operator-(const Vector3 &other);
+    Vector3 operator*(const double& k);
+    double operator*(const Vector3 &other);
 
 
 };
